@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   aboutImageStyle: {
     width: wp("100%"),
     height: hp("30%"),
-    marginTop: 70
+    marginTop: 50
   },
   brandStyle: {
     fontSize: theme.FONT_SIZE_LARGE,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     backgroundColor: theme.PRIMARY_COLOR,
     borderRadius: 15,
-    marginTop: 100
+    marginTop: 80
   },
   buttonLabelStyle: {
     color: theme.NORMAL_COLOR,
