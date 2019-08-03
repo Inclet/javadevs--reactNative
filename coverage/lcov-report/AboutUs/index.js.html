@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for Welcome Screen/index.js</title>
+    <title>Code coverage report for AboutUs/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">All files</a> / <a href="index.html">Welcome Screen</a> index.js
+      <a href="../index.html">All files</a> / <a href="index.html">AboutUs</a> index.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>19/19</span>
+        <span class='fraction'>18/18</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/13</span>
+        <span class='fraction'>12/12</span>
       </div>
     </div>
     <p class="quiet">
@@ -102,8 +102,25 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -113,7 +130,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -135,9 +151,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,59 +195,77 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
-import welcomeImage from "../Assets/Images/developersd.png";
-import Icon from "react-native-vector-icons/Ionicons";
-import common from "../Styles/common.style";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import theme from "../Styles/theme.style";
+import common from "../Styles/common.style";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from "react-native-responsive-screen";
-import { View, Text, StyleSheet, Image } from "react-native";
+import AboutImage from "../Assets/Images/webdesign.png";
 import Layout from "../Common/Layout/index";
-&nbsp;
-const Welcome = ({ navigation }) =&gt; {
+const AboutUs = ({ navigation }) =&gt; {
   return (
-    &lt;Layout target={navigation} currentPage={1}&gt;
+    &lt;Layout target={navigation} currentPage={2}&gt;
       &lt;View style={common.innerPageLayout}&gt;
-        &lt;Image source={welcomeImage} style={styles.welcomeImageStyle} /&gt;
-        &lt;Text style={styles.textStyle}&gt;Welcome&lt;/Text&gt;
-        &lt;Text style={styles.welcomeMsg}&gt;We are so glad you're here&lt;/Text&gt;
-        &lt;Icon
-          data-testID="nextNavigator"
-          name="ios-arrow-round-forward"
-          size={70}
-          style={styles.iconStyle}
+        &lt;Image source={AboutImage} style={styles.aboutImageStyle} /&gt;
+        &lt;Text style={styles.brandStyle}&gt;JavaDevs&lt;/Text&gt;
+        &lt;Text style={styles.sloganStyle}&gt;We are in this together&lt;/Text&gt;
+        &lt;Text style={styles.descriptionStyle}&gt;
+          Choose a java developer from a large pool of world-class developers.
+        &lt;/Text&gt;
+        &lt;TouchableOpacity
+          data-testID="authScreenNavigator"
           onPress={() =&gt; {
-            navigation.navigate("AboutUs");
+            navigation.navigate("AuthScreen");
           }}
-        /&gt;
+        &gt;
+          &lt;View style={styles.buttonStyle}&gt;
+            &lt;Text style={styles.buttonLabelStyle}&gt;Let's Go&lt;/Text&gt;
+          &lt;/View&gt;
+        &lt;/TouchableOpacity&gt;
       &lt;/View&gt;
     &lt;/Layout&gt;
   );
 };
 &nbsp;
-export default Welcome;
+export default AboutUs;
 &nbsp;
 const styles = StyleSheet.create({
-  textStyle: {
+  aboutImageStyle: {
+    width: wp("100%"),
+    height: hp("30%"),
+    marginTop: 70
+  },
+  brandStyle: {
     fontSize: theme.FONT_SIZE_LARGE,
     color: theme.PRIMARY_COLOR,
-    marginTop: -50
+    marginTop: 20
   },
-  welcomeImageStyle: {
-    marginTop: -20,
-    width: wp("100%"),
-    height: hp("70%")
-  },
-  welcomeMsg: {
+  sloganStyle: {
     fontSize: theme.FONT_SIZE_MEDIUM,
     color: theme.SECONDARY_COLOR,
+    marginTop: 15
+  },
+  descriptionStyle: {
+    fontSize: theme.FONT_SIZE_SMALL,
+    color: theme.MEDIUM_COLOR,
+    width: wp("80%"),
+    textAlign: "center",
     marginTop: 30
   },
-  iconStyle: {
-    marginTop: 20,
-    color: theme.PRIMARY_COLOR
+  buttonStyle: {
+    width: wp("70%"),
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: theme.PRIMARY_COLOR,
+    borderRadius: 15,
+    marginTop: 100
+  },
+  buttonLabelStyle: {
+    color: theme.NORMAL_COLOR,
+    fontSize: theme.FONT_SIZE_REGULAR,
+    textAlign: "center"
   }
 });
 &nbsp;</pre></td></tr>
