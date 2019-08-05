@@ -33,8 +33,6 @@ const AboutUs = ({ navigation }) => {
   );
 };
 
-export default AboutUs;
-
 const styles = StyleSheet.create({
   aboutImageStyle: {
     width: wp("100%"),
@@ -72,3 +70,5 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
+
+export default AboutUs;

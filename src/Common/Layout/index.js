@@ -50,8 +50,6 @@ const Layout = ({ children, target, currentPage }) => {
   );
 };
 
-export default Layout;
-
 export const styles = StyleSheet.create({
   bottomPaginator: {
     flex: 1,
@@ -64,3 +62,5 @@ export const styles = StyleSheet.create({
     padding: 5
   }
 });
+
+export default Layout;
