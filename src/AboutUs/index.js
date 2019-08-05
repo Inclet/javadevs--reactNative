@@ -10,6 +10,7 @@ import AboutImage from "../Assets/Images/webdesign.png";
 import Layout from "../Common/Layout/index";
 import CommonButton from "../Common/Button/index";
 
+
 const AboutUs = ({ navigation }) => {
   return (
     <Layout target={navigation} currentPage={2}>
