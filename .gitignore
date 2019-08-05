@@ -60,3 +60,6 @@ buck-out/
 
 # Ignore test-related files
 /coverage/
+
+# Ignore yarn files
+yarn.lock
