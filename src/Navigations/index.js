@@ -1,6 +1,7 @@
 import Welcome from "../Welcome Screen";
 import { createAppContainer, createStackNavigator } from "react-navigation";
-import AboutUs from '../AboutUs';
+import AboutUs from "../AboutUs";
+import AuthScreen from "../Auth Screen/index";
 
 const firstPages = createStackNavigator(
   {
@@ -8,17 +9,23 @@ const firstPages = createStackNavigator(
       screen: Welcome,
       navigationOptions: {
         header: null
-      },
+      }
     },
     AboutUs: {
       screen: AboutUs,
       navigationOptions: {
-        header: null,
-      },
+        header: null
+      }
     },
+    AuthScreen: {
+      screen: AuthScreen,
+      navigationOptions: {
+        header: null
+      }
+    }
   },
   {
-    initialRouteName: "Welcome",
+    initialRouteName: "Welcome"
   }
 );
 
