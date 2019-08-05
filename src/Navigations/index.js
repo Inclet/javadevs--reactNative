@@ -1,9 +1,14 @@
 import Welcome from "../Welcome Screen";
-import { createAppContainer, createStackNavigator } from "react-navigation";
+import {
+  createAppContainer,
+  createStackNavigator,
+  createSwitchNavigator
+} from "react-navigation";
 import AboutUs from "../AboutUs";
 import AuthScreen from "../Auth Screen/index";
+import Login from "../Login Screen/index";
 
-const firstPages = createStackNavigator(
+const Firstpages = createStackNavigator(
   {
     Welcome: {
       screen: Welcome,
@@ -29,4 +34,19 @@ const firstPages = createStackNavigator(
   }
 );
 
-export default createAppContainer(firstPages);
+const Routes = createSwitchNavigator(
+  {
+    Login: {
+      screen: Login,
+      navigationOptions: {
+        header: null
+      }
+    },
+    Home: Firstpages
+  },
+  {
+    initialRouteName: "Home"
+  }
+);
+
+export default createAppContainer(Routes);
