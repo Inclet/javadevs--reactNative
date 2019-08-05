@@ -1,5 +1,5 @@
 import React from "react";
-import welcomeImage from '../Assets/Images/developersd.png';
+import welcomeImage from "../Assets/Images/developersd.png";
 import Icon from "react-native-vector-icons/Ionicons";
 import {
   widthPercentageToDP as wp,
