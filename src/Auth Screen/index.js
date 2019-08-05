@@ -32,8 +32,6 @@ const AuthScreen = ({ navigation }) => {
   );
 };
 
-export default AuthScreen;
-
 const styles = StyleSheet.create({
   authImageStyle: {
     width: wp("100%"),
@@ -41,3 +39,5 @@ const styles = StyleSheet.create({
     marginTop: 30
   }
 });
+
+export default AuthScreen;

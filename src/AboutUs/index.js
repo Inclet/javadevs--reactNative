@@ -30,8 +30,6 @@ const AboutUs = ({ navigation }) => {
   );
 };
 
-export default AboutUs;
-
 const styles = StyleSheet.create({
   aboutImageStyle: {
     width: wp("100%"),
@@ -51,3 +49,5 @@ const styles = StyleSheet.create({
     marginTop: 30
   }
 });
+
+export default AboutUs;

@@ -31,8 +31,6 @@ const Welcome = ({ navigation }) => {
   );
 };
 
-export default Welcome;
-
 const styles = StyleSheet.create({
   textStyle: {
     fontSize: theme.FONT_SIZE_LARGE,
@@ -54,3 +52,5 @@ const styles = StyleSheet.create({
     color: theme.PRIMARY_COLOR
   }
 });
+
+export default Welcome;
