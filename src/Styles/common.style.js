@@ -30,5 +30,19 @@ export default StyleSheet.create({
     color: theme.NORMAL_COLOR,
     fontSize: theme.FONT_SIZE_REGULAR,
     textAlign: "center"
-  }
+  },
+  socialLoginLabelStyle: {
+    borderRadius: 100,
+    padding: 5,
+    marginRight: 15,
+    shadowColor: "#000",
+    backgroundColor: "white",
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6
+  },
 });

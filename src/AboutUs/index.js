@@ -1,14 +1,14 @@
-import React from "react";
-import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
-import theme from "../Styles/theme.style";
-import common from "../Styles/common.style";
+import React from 'react';
+import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
+import theme from '../Styles/theme.style';
+import common from '../Styles/common.style';
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen";
-import AboutImage from "../Assets/Images/webdesign.png";
-import Layout from "../Common/Layout/index";
-import CommonButton from "../Common/Button/index";
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import AboutImage from '../Assets/Images/webdesign.png';
+import Layout from '../Common/Layout/index';
+import CommonButton from '../Common/Button/index';
 
 const AboutUs = ({ navigation }) => {
   return (
@@ -33,22 +33,22 @@ const AboutUs = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   aboutImageStyle: {
-    width: wp("100%"),
-    height: hp("30%"),
-    marginTop: 50
+    width: wp('100%'),
+    height: hp('30%'),
+    marginTop: 50,
   },
   sloganStyle: {
     fontSize: theme.FONT_SIZE_MEDIUM,
     color: theme.SECONDARY_COLOR,
-    marginTop: 15
+    marginTop: 15,
   },
   descriptionStyle: {
     fontSize: theme.FONT_SIZE_SMALL,
     color: theme.MEDIUM_COLOR,
-    width: wp("80%"),
-    textAlign: "center",
-    marginTop: 30
-  }
+    width: wp('80%'),
+    textAlign: 'center',
+    marginTop: 30,
+  },
 });
 
 export default AboutUs;

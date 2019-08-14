@@ -1,13 +1,13 @@
-import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from "react-native-responsive-screen";
-import common from "../Styles/common.style";
-import Layout from "../Common/Layout/index";
-import authImage from "../Assets/Images/Login.png";
-import CommonButton from "../Common/Button";
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import common from '../Styles/common.style';
+import Layout from '../Common/Layout/index';
+import authImage from '../Assets/Images/Login.png';
+import CommonButton from '../Common/Button';
 
 const AuthScreen = ({ navigation }) => {
   return (
@@ -34,10 +34,10 @@ const AuthScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   authImageStyle: {
-    width: wp("100%"),
-    height: hp("40%"),
-    marginTop: 30
-  }
+    width: wp('100%'),
+    height: hp('40%'),
+    marginTop: 30,
+  },
 });
 
 export default AuthScreen;

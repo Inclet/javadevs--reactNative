@@ -1,6 +1,6 @@
-import React from "react";
-import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
-import common from "../../Styles/common.style";
+import React from 'react';
+import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import common from '../../Styles/common.style';
 
 const CommonButton = ({ label, target, newMarginTop, page }) => {
   return (
@@ -22,3 +22,4 @@ const CommonButton = ({ label, target, newMarginTop, page }) => {
 };
 
 export default CommonButton;
+

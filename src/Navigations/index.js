@@ -1,36 +1,41 @@
-import Welcome from "../Welcome Screen";
+import Welcome from '../Welcome Screen';
 import {
   createAppContainer,
   createStackNavigator,
-  createSwitchNavigator
-} from "react-navigation";
-import AboutUs from "../AboutUs";
-import AuthScreen from "../Auth Screen/index";
-import Login from "../Login Screen/index";
+  createSwitchNavigator,
+} from 'react-navigation';
+import AboutUs from '../AboutUs';
+import AuthScreen from '../Auth Screen/index';
+import Login from '../Login Screen/index';
+import Home from '../Home/index';
 
-const Firstpages = createStackNavigator(
+const FirstPages = createStackNavigator(
   {
     Welcome: {
       screen: Welcome,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     AboutUs: {
       screen: AboutUs,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     AuthScreen: {
       screen: AuthScreen,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
+    },
+    Home: {
+      screen: Home,
+      path: "home/:user_token",
     }
   },
   {
-    initialRouteName: "Welcome"
+    initialRouteName: 'Welcome',
   }
 );
 
@@ -39,13 +44,16 @@ const Routes = createSwitchNavigator(
     Login: {
       screen: Login,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
-    Home: Firstpages
+    FirstPages: {
+      screen: FirstPages,
+      path: ""
+    },
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: 'FirstPages',
   }
 );
 
