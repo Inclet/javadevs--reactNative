@@ -39,7 +39,10 @@ class Login extends Component {
   };
 
   // user login
-  handleLogin = navigate => {
+  handleLogin = () => {
+    const {
+      navigation: { navigate },
+    } = this.props;
     const { email, password } = this.state;
     if (email === '' || password === "") {
       if (password === '') {
@@ -68,14 +71,13 @@ class Login extends Component {
         await AsyncStorage.setItem("userToken", res.user.ra);
         navigate("Home");
       })
-      .catch(({ message }) => {
+      .catch(async ({ message }) => {
         if (message.split(' ')[1] === 'email') {
           return this.handleStateChange({ errors: { email: message } });
         }
         this.handleStateChange({ errors: { accountError: message } });
       });
   };
-
   render() {
     const { errors } = this.state;
     const { navigate } = this.props.navigation;
@@ -124,7 +126,7 @@ class Login extends Component {
         </View>
         <TouchableOpacity
           data-navigator="buttonNavigator"
-          onPress={() => this.handleLogin(navigate)}
+          onPress={this.handleLogin}
         >
           <View style={common.buttonStyle}>
             <Text data-text="buttonLabel" style={common.buttonLabelStyle}>
