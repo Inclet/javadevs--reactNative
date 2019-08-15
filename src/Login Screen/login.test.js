@@ -15,9 +15,9 @@ describe('Rendering', () => {
     props = {
       navigation: { navigate },
     };
-    return (wrapper = shallow(<Login {...props} />));
   });
   it('Should render without crashing', () => {
+    wrapper = shallow(<Login {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 });
@@ -28,9 +28,9 @@ describe('Test User Inputs', () => {
     props = {
       navigation: { navigate },
     };
-    return (wrapper = shallow(<Login {...props} />));
   });
   it('Should change state when a user types in email input field', () => {
+    wrapper = shallow(<Login {...props} />);
     wrapper
       .find(`[data-email-input="email"]`)
       .simulate('changeText', "user@javadevs.com");
@@ -38,6 +38,7 @@ describe('Test User Inputs', () => {
   });
 
   it("Should change state when a user types in password input field", () => {
+    wrapper = shallow(<Login {...props} />);
     wrapper
       .find(`[data-password-input="password"]`)
       .simulate('changeText', 'javadevs19');
@@ -45,11 +46,13 @@ describe('Test User Inputs', () => {
   });
 
   it('should make email field required', () => {
+    wrapper = shallow(<Login {...props} />);
     wrapper.find(`[data-navigator="buttonNavigator"]`).simulate('press');
     expect(wrapper.state().errors.email).toEqual('Email is required!');
   });
 
   it('should make password field required', () => {
+    wrapper = shallow(<Login {...props} />);
     wrapper
       .find(`[data-email-input="email"]`)
       .simulate("changeText", "user@javadevs.com");
@@ -66,6 +69,7 @@ describe('Test User Inputs', () => {
     // expct(wrapper).tobeDefined();
   });
   it('should make signin a user', async () => {
+    wrapper = shallow(<Login {...props} />);
     wrapper
       .find(`[data-email-input="email"]`)
       .simulate("changeText", "user@javadevs.com");
@@ -81,6 +85,7 @@ describe('Test User Inputs', () => {
   });
 
   it('should make return an error when email is not valid', async () => {
+    wrapper = shallow(<Login {...props} />);
     wrapper.find(`[data-email-input="email"]`).simulate('changeText', 'user');
 
     wrapper
@@ -96,6 +101,7 @@ describe('Test User Inputs', () => {
   });
 
   it('should return an error when the account doesn\'t exist', async () => {
+    wrapper = shallow(<Login {...props} />);
     wrapper
       .find(`[data-email-input="email"]`)
       .simulate("changeText", "users@javadevs.com");
