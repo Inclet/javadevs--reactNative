@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -6,34 +6,37 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  AsyncStorage,
-} from 'react-native';
-import common from '../Styles/common.style';
-import signupImage from '../Assets/Images/Signup.png';
-import googleIcon from '../Assets/Images/icons8-google-48.png';
-import gitHubIcon from '../Assets/Images/GitHub-Mark-32px.png';
+  AsyncStorage
+} from "react-native";
+import common from "../Styles/common.style";
+import signupImage from "../Assets/Images/Signup.png";
+import googleIcon from "../Assets/Images/icons8-google-48.png";
+import gitHubIcon from "../Assets/Images/GitHub-Mark-32px.png";
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import theme from '../Styles/theme.style';
-import firebase from '../../firebase.config';
-import SocialIcon from "../Common/SocialIcon";
-import { googleLogin } from '../../Firebase Socials/googleLogin';
-import openUrlLink from '../../utilities/openUrlLink';
-import { CLIENT_ID } from "react-native-dotenv";
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen";
+import theme from "../Styles/theme.style";
+import firebase from "../../firebase.config";
+import SocialIcon from '../Common/SocialIcon';
+import { googleLogin } from "../../Firebase Socials/googleLogin";
+import openUrlLink from "../../utilities/openUrlLink";
+import { CLIENT_ID } from 'react-native-dotenv';
 
 class SignUp extends Component {
-  state = {
-    email: '',
-    password: '',
-    username: '',
-    errors: {
-      email: '',
-      accountError: '',
-      username: '',
-    },
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      username: "",
+      errors: {
+        email: "",
+        accountError: "",
+        username: ""
+      }
+    };
+  }
 
   // changing values in a state
   handleStateChange = key => {
@@ -43,32 +46,32 @@ class SignUp extends Component {
   // user login
   handleLogin = navigate => {
     const { email, password, username } = this.state;
-    if (email === '' || password === '' || username === '') {
-      if (password === '') {
+    if (email === "" || password === "" || username === "") {
+      if (password === "") {
         this.setState(state => ({
           errors: {
             email: state.errors.email,
-            accountError: "Password is required!"
-          }
-        }));
-      }
-
-      if (email === '') {
-        this.setState(state => ({
-          errors: {
-            email: 'Email is required!',
-            accountError: state.errors.accountError,
-          }
-        }));
-      }
-
-      if (username === "") {
-        this.setState(state => ({
-          errors: {
-            email: state.errors.email,
-            accountError: state.errors.accountError,
-            username: 'Username is required!',
+            accountError: 'Password is required!',
           },
+        }));
+      }
+
+      if (email === "") {
+        this.setState(state => ({
+          errors: {
+            email: "Email is required!",
+            accountError: state.errors.accountError
+          },
+        }));
+      }
+
+      if (username === '') {
+        this.setState(state => ({
+          errors: {
+            email: state.errors.email,
+            accountError: state.errors.accountError,
+            username: "Username is required!"
+          }
         }));
       }
       return;
@@ -77,12 +80,11 @@ class SignUp extends Component {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(async res => {
-        console.log("user", res);
-        await AsyncStorage.setItem("userToken", res.user.ra);
-        navigate("Home");
+        await AsyncStorage.setItem('userToken', res.user.ra);
+        navigate('Home');
       })
       .catch(({ message }) => {
-        if (message.split(' ')[1] === 'email') {
+        if (message.split(" ")[1] === "email") {
           return this.handleStateChange({ errors: { email: message } });
         }
         this.handleStateChange({ errors: { accountError: message } });
@@ -108,7 +110,7 @@ class SignUp extends Component {
             onChangeText={email =>
               this.handleStateChange({
                 email,
-                errors: { email: "", accountError: "", username: "" }
+                errors: { email: '', accountError: '', username: '' },
               })
             }
           />
@@ -126,7 +128,7 @@ class SignUp extends Component {
             onChangeText={username =>
               this.handleStateChange({
                 username,
-                errors: { email: "", accountError: "", username: "" }
+                errors: { email: '', accountError: '', username: '' },
               })
             }
           />
@@ -145,7 +147,7 @@ class SignUp extends Component {
             onChangeText={password =>
               this.handleStateChange({
                 password,
-                errors: { email: '', accountError: '', username: '' },
+                errors: { email: "", accountError: "", username: "" }
               })
             }
           />
@@ -163,12 +165,12 @@ class SignUp extends Component {
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate("Login")}>
+        <TouchableOpacity onPress={() => navigate('Login')}>
           <Text style={styles.labelsStyle}>Already have an account? Login</Text>
         </TouchableOpacity>
         <Text style={styles.labelsStyle}>or Signup with</Text>
         <View style={styles.socialsStyle}>
-          <TouchableOpacity onPress={() => googleLogin(navigate, "Home")}>
+          <TouchableOpacity onPress={() => googleLogin(navigate, 'Home')}>
             <SocialIcon imageUrl={googleIcon} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => openUrlLink(url, navigate)}>
@@ -183,49 +185,49 @@ class SignUp extends Component {
 const styles = StyleSheet.create({
   brandLogo: {
     ...common.brandStyle,
-    marginTop: 30,
+    marginTop: 30
   },
   signupImageStyle: {
-    width: wp('100%'),
-    height: hp('20%'),
+    width: wp("100%"),
+    height: hp("20%")
   },
   innerContainerStyle: {
-    width: wp('85%'),
+    width: wp("85%"),
     borderColor: theme.NORMAL_COLOR,
     borderBottomColor: theme.PRIMARY_COLOR,
     borderWidth: 2,
     marginBottom: 20,
-    paddingBottom: 5,
+    paddingBottom: 5
   },
   placeHolderLabelStyle: {
     fontSize: 18,
     color: theme.SECONDARY_COLOR,
-    marginTop: 8,
+    marginTop: 8
   },
   placeHolderStyle: {
-    padding: 10,
+    padding: 10
   },
   labelsStyle: {
     fontSize: 20,
     color: theme.SECONDARY_COLOR,
-    marginTop: 15,
+    marginTop: 15
   },
   socialsStyle: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    marginBottom: 30,
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "center",
+    marginBottom: 30
   },
   errorContainerStyle: {
-    width: wp('80%'),
+    width: wp("80%"),
     marginBottom: 10,
-    marginTop: -10,
+    marginTop: -10
   },
   errorMessageStyle: {
-    color: 'red',
-    textAlign: "center"
-  }
+    color: "red",
+    textAlign: 'center',
+  },
 });
 
 export default SignUp;
