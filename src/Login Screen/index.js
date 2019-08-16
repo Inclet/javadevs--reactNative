@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -6,33 +6,33 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  AsyncStorage,
-} from 'react-native';
-import common from '../Styles/common.style';
-import loginImage from '../Assets/Images/waiting.png';
-import googleIcon from '../Assets/Images/icons8-google-48.png';
-import gitHubIcon from '../Assets/Images/GitHub-Mark-32px.png';
+  AsyncStorage
+} from "react-native";
+import common from "../Styles/common.style";
+import loginImage from "../Assets/Images/waiting.png";
+import googleIcon from "../Assets/Images/icons8-google-48.png";
+import gitHubIcon from "../Assets/Images/GitHub-Mark-32px.png";
 import {
   widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import theme from '../Styles/theme.style';
-import firebase from '../../firebase.config';
-import SocialIcon from "../Common/SocialIcon";
-import { googleLogin } from '../../Firebase Socials/googleLogin';
-import openUrlLink from '../../utilities/openUrlLink';
-import { CLIENT_ID } from "react-native-dotenv";
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen";
+import theme from "../Styles/theme.style";
+import firebase from "../../firebase.config";
+import SocialIcon from '../Common/SocialIcon';
+import { googleLogin } from "../../Firebase Socials/googleLogin";
+import openUrlLink from "../../utilities/openUrlLink";
+import { CLIENT_ID } from 'react-native-dotenv';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errors: {
-        email: '',
-        accountError: '',
-      },
+        email: "",
+        accountError: ""
+      }
     };
   }
 
@@ -44,25 +44,25 @@ class Login extends Component {
   // user login
   handleLogin = () => {
     const {
-      navigation: { navigate },
+      navigation: { navigate }
     } = this.props;
     const { email, password } = this.state;
-    if (email === '' || password === "") {
-      if (password === '') {
+    if (email === "" || password === '') {
+      if (password === "") {
         this.setState(state => ({
           errors: {
             email: state.errors.email,
-            accountError: "Password is required!"
-          }
+            accountError: 'Password is required!',
+          },
         }));
       }
 
-      if (email === '') {
+      if (email === "") {
         this.setState(state => ({
           errors: {
-            email: 'Email is required!',
-            accountError: state.errors.accountError,
-          }
+            email: "Email is required!",
+            accountError: state.errors.accountError
+          },
         }));
       }
       return;
@@ -71,11 +71,11 @@ class Login extends Component {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(async res => {
-        await AsyncStorage.setItem("userToken", res.user.ra);
-        navigate("Home");
+        await AsyncStorage.setItem('userToken', res.user.ra);
+        navigate('Home');
       })
       .catch(async ({ message }) => {
-        if (message.split(' ')[1] === 'email') {
+        if (message.split(" ")[1] === "email") {
           return this.handleStateChange({ errors: { email: message } });
         }
         this.handleStateChange({ errors: { accountError: message } });
@@ -100,7 +100,7 @@ class Login extends Component {
             onChangeText={email =>
               this.handleStateChange({
                 email,
-                errors: { email: "", accountError: "" }
+                errors: { email: '', accountError: '' },
               })
             }
           />
@@ -119,7 +119,7 @@ class Login extends Component {
             onChangeText={password =>
               this.handleStateChange({
                 password,
-                errors: { email: '', accountError: '' },
+                errors: { email: "", accountError: "" }
               })
             }
           />
@@ -140,7 +140,7 @@ class Login extends Component {
         <Text style={styles.labelsStyle}>Don't have an account?Create One</Text>
         <Text style={styles.labelsStyle}>Or Join With</Text>
         <View style={styles.socialsStyle}>
-          <TouchableOpacity onPress={() => googleLogin(navigate, "Home")}>
+          <TouchableOpacity onPress={() => googleLogin(navigate, 'Home')}>
             <SocialIcon imageUrl={googleIcon} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => openUrlLink(url, navigate)}>
@@ -155,49 +155,49 @@ class Login extends Component {
 const styles = StyleSheet.create({
   brandLogo: {
     ...common.brandStyle,
-    marginTop: 35,
+    marginTop: 35
   },
   loginImageStyle: {
-    width: wp('100%'),
-    height: hp('30%'),
+    width: wp("100%"),
+    height: hp("30%")
   },
   innerContainerStyle: {
-    width: wp('85%'),
+    width: wp("85%"),
     borderColor: theme.NORMAL_COLOR,
     borderBottomColor: theme.PRIMARY_COLOR,
     borderWidth: 2,
     marginBottom: 20,
-    paddingBottom: 5,
+    paddingBottom: 5
   },
   placeHolderLabelStyle: {
     fontSize: 23,
     color: theme.SECONDARY_COLOR,
-    marginTop: 10,
+    marginTop: 10
   },
   placeHolderStyle: {
-    padding: 10,
+    padding: 10
   },
   labelsStyle: {
     fontSize: 20,
     color: theme.SECONDARY_COLOR,
-    marginTop: 15,
+    marginTop: 15
   },
   socialsStyle: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    marginBottom: 40,
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "center",
+    marginBottom: 40
   },
   errorContainerStyle: {
-    width: wp('80%'),
+    width: wp("80%"),
     marginBottom: 10,
-    marginTop: -10,
+    marginTop: -10
   },
   errorMessageStyle: {
-    color: 'red',
-    textAlign: "center"
-  }
+    color: "red",
+    textAlign: 'center',
+  },
 });
 
 export default Login;
