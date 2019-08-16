@@ -28,6 +28,12 @@ jobs:
 
       - run: yarn install
 
+      # Run a step to setup an environment variable.
+      - run:
+          name: "Setup custom environment variables"
+          command: |
+            cp ./.env.example ./.env
+
       - save_cache:
           paths:
             - node_modules

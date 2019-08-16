@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import AboutUs from "./index";
+import AuthScreen from "./index";
 
-describe("About Us Screen", () => {
+describe("Auth Screen", () => {
   let wrapper, props;
   beforeEach(() => {
     props = {
@@ -10,7 +10,7 @@ describe("About Us Screen", () => {
         navigate: jest.fn()
       }
     };
-    wrapper = shallow(<AboutUs {...props} />);
+    wrapper = shallow(<AuthScreen {...props} />);
   });
   it("Should match Snapshot", () => {
     expect(wrapper).toMatchSnapshot();

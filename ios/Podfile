@@ -30,7 +30,24 @@ target 'javadevs' do
 
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+
+  pod 'Firebase/Auth'
+
+  pod 'AppAuth'
+
+  pod 'DCTAuth', :git => 'https://github.com/danielctull/DCTAuth.git'
+
+  pod 'RNAppAuth', :path => '../node_modules/react-native-app-auth/ios'
+
+  pod 'RNInAppBrowser', :path => '../node_modules/react-native-inappbrowser-reborn'
+
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
 
   target 'javadevsTests' do
     inherit! :search_paths
