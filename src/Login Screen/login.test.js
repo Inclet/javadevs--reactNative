@@ -7,6 +7,7 @@ import { AsyncStorage } from "react-native";
 jest.mock('react-native-firebase');
 jest.mock('react-native-google-signin');
 jest.mock("firebase");
+jest.mock("../../firebase.config");
 
 let props, wrapper, navigate;
 describe('Rendering', () => {
