@@ -32,7 +32,7 @@ jobs:
       - run:
           name: "Setup custom environment variables"
           command: |
-            echo 'export CLIENT_ID="FOOOOOO"' >> .env
+            echo 'CLIENT_ID="FOOOOOO"' >> .env
 
       - save_cache:
           paths:
