@@ -20,6 +20,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
+  allCenteredLayout: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  },
   brandStyle: {
     fontSize: theme.FONT_SIZE_LARGE,
     color: theme.PRIMARY_COLOR,

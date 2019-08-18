@@ -1,20 +1,91 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  FlatList
+} from 'react-native';
+import { Query } from "react-apollo";
 import commonStyle from "../Styles/common.style";
 import themeStyle from "../Styles/theme.style";
-import anImage from "../Assets/Images/webdesign.png";
+import loader from '../Assets/Images/double-ring-loader.gif';
+import Java_developers from '../graphQL_Queries/getAllJavadevelopers';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 class Home extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      developers: [],
+    };
+  }
+  static navigationOptions = {
+    title: "Top Java developers",
+    headerTitleStyle: {
+      color: themeStyle.PRIMARY_COLOR
+    },
+    headerStyle: {
+      borderBottomWidth: 0,
+      marginBottom: 10
+    },
+    headerTintColor: themeStyle.PRIMARY_COLOR,
+  };
 
   render() {
     return (
-      <View style={commonStyle.LeftAlignLayout}>
-        <Text style={styles.pageTitleStyle}>Top Java Developers</Text>
-        <View style={styles.developerCardStyle}>
-          <Text>01</Text>
-          <Image source={anImage} style={styles.profileImageStyle} />
+      <ScrollView>
+        <View style={commonStyle.LeftAlignLayout}>
+          <Query query={Java_developers}>
+            {({ loading, data, error }) => {
+              if (error) {
+                console.log(error);
+                return (
+                  <View>
+                    <Text>An Error Occured!</Text>
+                  </View>
+                );
+              }
+              if (loading) {
+                return (
+                  <View style={styles.loaderStyle}>
+                    <Image source={loader} />
+                  </View>
+                );
+              }
+              if (data) {
+                const { search } = data;
+                this.setState({ developers: search.edges });
+                return (
+                  <FlatList
+                    data={search.edges}
+                    renderItem={({ item, index }) => (
+                      <TouchableOpacity onPress={alert(item.node.name)}>
+                        <View style={styles.developerCardStyle}>
+                          <Text style={styles.developerRankStyle}>{index}</Text>
+                          <Image
+                            source={{ uri: `${item.node.avatarUrl}` }}
+                            style={styles.profileImageStyle}
+                          />
+                          <View style={styles.nameAndUsernameContainer}>
+                            <Text style={styles.developerNameStyle}>
+                              {item.node.name}
+                            </Text>
+                            <Text style={styles.developerUsernameStyle}>
+                              @{item.node.login}
+                            </Text>
+                          </View>
+                        </View>
+                      </TouchableOpacity>
+                    )}
+                    keyExtractor={(item, index) => index.toString()}
+                  />
+                );
+              }
+            }}
+          </Query>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -22,19 +93,40 @@ class Home extends Component {
 export default Home;
 
 const styles = StyleSheet.create({
-  pageTitleStyle: {
-    fontSize: 20,
-    marginLeft: 10,
-    color: themeStyle.PRIMARY_COLOR,
-  },
   profileImageStyle: {
-    width: 61,
-    height: 66
+    width: 63,
+    height: 69,
+    borderRadius: 8,
   },
   developerCardStyle: {
     marginLeft: 10,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
+  developerRankStyle: {
+    alignSelf: 'center',
+    marginRight: 15,
+    marginLeft: 15,
+    fontSize: 21,
+    color: themeStyle.PRIMARY_COLOR
+  },
+  nameAndUsernameContainer: {
+    alignSelf: 'center',
+    marginLeft: 20,
+    width: '70%',
+  },
+  developerNameStyle: {
+    fontSize: 21
+  },
+  developerUsernameStyle: {
+    fontSize: 20,
+    color: themeStyle.SECONDARY_COLOR
+  },
+  loaderStyle: {
+    height: '100%',
+    width: '100%',
+    margin: 150
   }
 });
