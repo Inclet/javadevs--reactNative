@@ -6,6 +6,7 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/react-native/jest/preprocessor.js',
   },
   setupFiles: ['<rootDir>/enzyme.config.js'],
+  roots: ['<rootDir>', '<rootDir>/src/'],
   transformIgnorePatterns: ['node_modules/(?!(jest-)?react-native)'],
   coveragePathIgnorePatterns: ['/node_modules/', '/jest']
 };

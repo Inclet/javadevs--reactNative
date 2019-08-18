@@ -63,3 +63,7 @@ buck-out/
 
 # Ignore yarn files
 yarn.lock
+
+# Ignore .env file
+.env
+
