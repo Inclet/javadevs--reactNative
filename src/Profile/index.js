@@ -1,27 +1,28 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Share } from "react-native";
-import commonStyle from '../Styles/common.style';
-import themeStyle from '../Styles/theme.style';
-import ButtonWithIcon from '../Common/ButtonsWithIcons';
-import githubIcon from "../Assets/Images/GitHub-Mark-Light-32px.png";
-import shareIcon from '../Assets/Images/share-but.png';
+import React, { Component } from "react";
+import { View, Text, StyleSheet, Image, Share } from 'react-native';
+import commonStyle from "../Styles/common.style";
+import themeStyle from "../Styles/theme.style";
+import ButtonWithIcon from "../Common/ButtonsWithIcons";
+import githubIcon from '../Assets/Images/GitHub-Mark-Light-32px.png';
+import shareIcon from "../Assets/Images/share-but.png";
 class Profile extends Component {
   static navigationOptions = {
-    title: "Profile",
+    title: 'Profile',
     headerTitleStyle: {
-      color: themeStyle.PRIMARY_COLOR
+      color: themeStyle.PRIMARY_COLOR,
+      fontSize: 20,
     },
     headerStyle: {
       borderBottomWidth: 0,
-      marginBottom: 10
+      marginBottom: 10,
     },
-    headerTintColor: themeStyle.PRIMARY_COLOR,
+    headerTintColor: themeStyle.PRIMARY_COLOR
   };
   state = {};
   render() {
     const {
       navigation: { navigate },
-      navigation,
+      navigation
     } = this.props;
     const {
       name,
@@ -29,7 +30,7 @@ class Profile extends Component {
       number_repo,
       number_stars,
       number_projects,
-      username,
+      username
     } = navigation.state.params;
     return (
       <View style={commonStyle.normalPageLayout}>
@@ -56,6 +57,7 @@ class Profile extends Component {
         <ButtonWithIcon
           label="GitHub Profile"
           target={navigate}
+          labelMargin="10%"
           newMarginTop="6%"
           url={`https://github.com/${username}`}
           iconUrl={githubIcon}
@@ -64,6 +66,7 @@ class Profile extends Component {
           label="Share"
           target={navigate}
           newMarginTop="13%"
+          labelMargin="25%"
           url={profilePic}
           iconUrl={shareIcon}
           username={username}
@@ -76,38 +79,38 @@ class Profile extends Component {
 
 const styles = StyleSheet.create({
   profilePicStyle: {
-    width: '50%',
-    height: '30%',
+    width: "50%",
+    height: "30%",
     borderRadius: 8,
-    marginTop: 10,
+    marginTop: 10
   },
   developerNameStyle: {
     fontSize: 23,
     marginTop: 5,
-    color: themeStyle.PRIMARY_COLOR,
+    color: themeStyle.PRIMARY_COLOR
   },
   usernameStyle: {
     marginTop: 2,
     fontSize: 20,
-    color: themeStyle.SECONDARY_COLOR,
+    color: themeStyle.SECONDARY_COLOR
   },
   repoSummary: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "center"
   },
   summaryStyle: {
     ...commonStyle.allCenteredLayout,
-    width: "18%",
+    width: '18%',
     margin: 20,
-    height: 100
+    height: 100,
   },
   statisticStyle: {
-    fontSize: 23,
+    fontSize: 23
   },
   statisticsLabel: {
     fontSize: 20,
-    color: themeStyle.SECONDARY_COLOR,
-  },
+    color: themeStyle.SECONDARY_COLOR
+  }
 });
 export default Profile;

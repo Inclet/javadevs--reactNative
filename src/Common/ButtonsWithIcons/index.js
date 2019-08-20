@@ -29,6 +29,7 @@ class ButtonWithIcon extends Component {
       label,
       target,
       newMarginTop,
+      labelMargin,
       url,
       iconUrl,
       share = '',
@@ -54,7 +55,10 @@ class ButtonWithIcon extends Component {
               { marginTop: newMarginTop, paddingLeft: 25 },
             ]}
           >
-            <Text data-text="buttonLabel" style={common.buttonLabelStyle}>
+            <Text
+              data-text="buttonLabel"
+              style={[common.buttonLabelStyle, { marginLeft: labelMargin }]}
+            >
               <Image source={iconUrl} style={styles.buttonIconStyle} />
               {` ${label}`}
             </Text>
