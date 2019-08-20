@@ -1,6 +1,6 @@
-import { GoogleSignin } from "react-native-google-signin";
-import firebase from "react-native-firebase";
-import { AsyncStorage } from "react-native";
+import { GoogleSignin } from 'react-native-google-signin';
+import firebase from 'react-native-firebase';
+import { AsyncStorage } from 'react-native';
 
 // Calling this function will open Google for login.
 export async function googleLogin(navigate, page) {
@@ -18,7 +18,7 @@ export async function googleLogin(navigate, page) {
     // login with credential
     await firebase.auth().signInWithCredential(credential);
     const currentUser = await GoogleSignin.getTokens();
-    await AsyncStorage.setItem("userToken", currentUser.idToken);
+    await AsyncStorage.setItem('userToken', currentUser.idToken);
     navigate(page);
   } catch (e) {
     console.error(e);
