@@ -1,38 +1,55 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Image,
   ScrollView,
-  FlatList
-} from 'react-native';
-import { Query } from "react-apollo";
-import commonStyle from "../Styles/common.style";
-import themeStyle from "../Styles/theme.style";
-import loader from '../Assets/Images/double-ring-loader.gif';
-import Java_developers from '../graphQL_Queries/getAllJavadevelopers';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+  FlatList,
+} from "react-native";
+import { Query } from 'react-apollo';
+import commonStyle from '../Styles/common.style';
+import themeStyle from '../Styles/theme.style';
+import loader from "../Assets/Images/double-ring-loader.gif";
+import Java_developers from "../graphQL_Queries/getAllJavadevelopers";
+import { TouchableOpacity } from "react-native-gesture-handler";
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      developers: [],
+      developers: []
     };
   }
   static navigationOptions = {
-    title: "Top Java developers",
+    title: 'Top Java developers',
     headerTitleStyle: {
-      color: themeStyle.PRIMARY_COLOR
+      color: themeStyle.PRIMARY_COLOR,
     },
     headerStyle: {
       borderBottomWidth: 0,
-      marginBottom: 10
+      marginBottom: 10,
     },
-    headerTintColor: themeStyle.PRIMARY_COLOR,
+    headerTintColor: themeStyle.PRIMARY_COLOR
   };
 
+  _profileParams = ({
+    name,
+    avatarUrl,
+    login,
+    repositories,
+    starredRepositories,
+    projects
+  }) => ({
+    profilePic: avatarUrl,
+    name,
+    username: login,
+    number_repo: repositories.totalCount,
+    number_stars: starredRepositories.totalCount,
+    number_projects: projects.totalCount
+  });
+
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <ScrollView>
         <View style={commonStyle.LeftAlignLayout}>
@@ -55,12 +72,15 @@ class Home extends Component {
               }
               if (data) {
                 const { search } = data;
-                this.setState({ developers: search.edges });
                 return (
                   <FlatList
                     data={search.edges}
                     renderItem={({ item, index }) => (
-                      <TouchableOpacity onPress={alert(item.node.name)}>
+                      <TouchableOpacity
+                        onPress={() =>
+                          navigate("Profile", this._profileParams(item.node))
+                        }
+                      >
                         <View style={styles.developerCardStyle}>
                           <Text style={styles.developerRankStyle}>{index}</Text>
                           <Image
@@ -96,37 +116,37 @@ const styles = StyleSheet.create({
   profileImageStyle: {
     width: 63,
     height: 69,
-    borderRadius: 8,
+    borderRadius: 8
   },
   developerCardStyle: {
     marginLeft: 10,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    marginBottom: 20,
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    marginBottom: 20
   },
   developerRankStyle: {
-    alignSelf: 'center',
+    alignSelf: "center",
     marginRight: 15,
     marginLeft: 15,
     fontSize: 21,
-    color: themeStyle.PRIMARY_COLOR
+    color: themeStyle.PRIMARY_COLOR,
   },
   nameAndUsernameContainer: {
-    alignSelf: 'center',
+    alignSelf: "center",
     marginLeft: 20,
-    width: '70%',
+    width: "70%"
   },
   developerNameStyle: {
-    fontSize: 21
+    fontSize: 21,
   },
   developerUsernameStyle: {
     fontSize: 20,
-    color: themeStyle.SECONDARY_COLOR
+    color: themeStyle.SECONDARY_COLOR,
   },
   loaderStyle: {
-    height: '100%',
-    width: '100%',
-    margin: 150
-  }
+    height: "100%",
+    width: "100%",
+    margin: 150,
+  },
 });

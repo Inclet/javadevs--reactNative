@@ -8,9 +8,6 @@ const javadeveloper = gql`
           ... on User {
             name
             login
-            bio
-            email
-            location
             avatarUrl
             starredRepositories {
               totalCount
@@ -22,6 +19,9 @@ const javadeveloper = gql`
               totalCount
             }
             following {
+              totalCount
+            }
+            projects {
               totalCount
             }
           }
