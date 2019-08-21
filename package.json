@@ -10,10 +10,15 @@
     "stop-flow": "flow stop"
   },
   "dependencies": {
+    "apollo-boost": "^0.4.4",
+    "apollo-client": "^2.6.4",
     "axios": "^0.19.0",
     "firebase": "^6.3.4",
+    "graphql": "^14.4.2",
+    "graphql-tag": "^2.10.1",
     "path": "^0.12.7",
     "react": "16.8.6",
+    "react-apollo": "^3.0.1",
     "react-native": "0.60.4",
     "react-native-app-auth": "^4.4.0",
     "react-native-dotenv": "^0.2.0",
@@ -23,16 +28,20 @@
     "react-native-inappbrowser-reborn": "^3.0.0",
     "react-native-oauth": "^2.1.18",
     "react-native-responsive-screen": "^1.2.2",
+    "react-native-share": "^2.0.0",
     "react-native-vector-icons": "^6.6.0",
     "react-native-webview": "^6.9.0",
-    "react-navigation": "^3.11.1"
+    "react-navigation": "^3.11.1",
+    "ts-jest": "^24.0.2"
   },
   "devDependencies": {
+    "@apollo/react-testing": "^3.0.1",
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-flow": "^7.0.0",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.8.0",
+    "babel-plugin-module-resolver": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^6.1.0",
